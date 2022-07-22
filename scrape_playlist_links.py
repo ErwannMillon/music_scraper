@@ -13,13 +13,14 @@ base_url = "https://music.youtube.com/watch?v="
 ssl._create_default_https_context = ssl._create_unverified_context
 test_playlist = "https://music.youtube.com/playlist?list=RDCLAK5uy_lRr2S1Nmk-a4qeSFpU0WoLuVETphGyBP8"
 test_playlist2 = "https://www.youtube.com/playlist?list=PLxI6IWh7Z6bqIMMIzWyVMcgrfEj6K43i5"
-playlist_id = "RDCLAK5uy_lRr2S1Nmk-a4qeSFpU0WoLuVETphGyBP8"
+# playlist_id = "RDCLAK5uy_lRr2S1Nmk-a4qeSFpU0WoLuVETphGyBP8"
 
 def scrape_playlist_links(playlist_link=test_playlist):
     ytmusic = YTMusic('headers_auth.json', "117564047350972400176")
+    playlist_id = playlist_link[playlist_link.find("=") + 1:]
     playlist_tracks = ytmusic.get_watch_playlist(playlistId=playlist_id, limit=60)['tracks']
     # print(pl[0])
-    with open("songs.txt", "r") as file:
+    with open("songs.txt", "w+") as file:
         current_list = file.readlines()
     with open("songs.txt", "a") as file:
         for track in playlist_tracks:

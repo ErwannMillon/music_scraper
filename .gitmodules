@@ -1,0 +1,3 @@
+[submodule "cyanite-integration-example"]
+	path = cyanite-integration-example
+	url = https://github.com/cyanite-ai/cyanite-integration-example.git
